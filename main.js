@@ -4,7 +4,7 @@
 const num = 266219;
 
 // Меняем тип данных с number на string, создаем массив
-const array = num.toString().split('')
+const array = num.toString().split('');
 
 // С помощью метода перебора массива reduce() производим умножение всех элементов массива
 const multiplication = array.reduce(function(accumulator, item) {
