@@ -5,7 +5,6 @@ const num = 266219;
 
 // Меняем тип данных с number на string, создаем массив
 const array = num.toString().split('')
-console.log('array: ', array);
 
 // С помощью метода перебора массива reduce() производим умножение всех элементов массива
 const multiplication = array.reduce(function(accumulator, item) {
