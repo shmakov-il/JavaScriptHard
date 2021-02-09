@@ -1,27 +1,22 @@
 'use strict';
 
-let isNumber = function(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-};
+// Первая задача
+const arr = ['593121', '24421', '290032', '465', '357', '112', '422332',];
 
-let text = prompt('Напишите что-нибудь...');
+arr.forEach(function(number) {
+  if (number.startsWith('2') || number.startsWith('4')) {
+    console.log(number);
+  }
+});
 
-function myFunction (text) {
-  // проверяем на строка/не строка
-  if (isNumber(text)) {
-    alert('Напишите строку!');
-  } 
-
-  // убираем пробелы в начале и конце строки
-  text = text.trim();
-
-  // вводим ограниченеие по символам
-  if (text.length > 30) {
-    return text.slice(0, 30) + '...';
-  } else {
-    return text;
-  } 
+// Вторая задача
+// Создаем вложенный цикл с меткой
+nextNumber:
+for (let i = 2; i <= 100; i++) { 
+  for (let j = 2; j < i; j++) { 
+    if (i % j === 0) {
+      continue nextNumber; 
+    } 
+  }
+  console.log( i + '. Делители этого числа ' + 1 + ' и ' + i );
 }
-
-alert(myFunction(text));
-
