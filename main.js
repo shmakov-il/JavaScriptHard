@@ -1,22 +1,20 @@
 'use strict';
 
-// Создаем нужную по заданию переменную (тип данных - number)
-const num = 266219;
+// Первая задача
+const lang = prompt('Введите "en" или "ru"');
+// С помощью if
+if (lang === 'en') {
+  console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+} else if (lang === 'ru') {
+  console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
+}
 
-// Меняем тип данных с number на string, создаем массив
-const array = num.toString().split('');
-
-// С помощью метода перебора массива reduce() производим умножение всех элементов массива
-const multiplication = array.reduce(function(accumulator, item) {
-  return accumulator * item;
-});
-console.log(multiplication);
-
-// Полученный результат возводим в степень = 3
-const result = multiplication ** 3;
-
-// Выводим в консоль первые две цифры полученного числа
-console.log(result.toString().substring(0, 2));
-
-
-
+// С помощью switch
+switch(lang) {
+  case 'en':
+    console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+    break;
+  case 'ru':
+    console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
+    break;
+}
