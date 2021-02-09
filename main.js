@@ -10,7 +10,7 @@ if (lang === 'en') {
 }
 
 // С помощью switch
-switch(lang) {
+switch (lang) {
   case 'en':
     console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
     break;
@@ -18,3 +18,16 @@ switch(lang) {
     console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
     break;
 }
+
+// С помощью многомерного массива
+const week = [];
+week['ru'] = ['Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'];
+week['en'] = ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'];
+console.log(String(week[lang]));
+
+// Вторая задача
+const namePerson = prompt('Введите имя');
+
+const result = namePerson === 'Артем' ? console.log('Директор') :
+  namePerson === 'Максим' ? console.log('Преподаватель') :
+  console.log('Студент');
