@@ -1,22 +1,21 @@
 'use strict';
+const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const day = document.querySelector('body');
 
-// Первая задача
-const arr = ['593121', '24421', '290032', '465', '357', '112', '422332',];
+    week.forEach((item, i) => {
 
-arr.forEach(function(number) {
-  if (number.startsWith('2') || number.startsWith('4')) {
-    console.log(number);
-  }
-});
+        const newDay = document.createElement('ul'); 
 
-// Вторая задача
-// Создаем вложенный цикл с меткой
-nextNumber:
-for (let i = 2; i <= 100; i++) { 
-  for (let j = 2; j < i; j++) { 
-    if (i % j === 0) {
-      continue nextNumber; 
-    } 
-  }
-  console.log( i + '. Делители этого числа ' + 1 + ' и ' + i );
-}
+        if (i === ((6 + new Date().getDay()) % 7)) { 
+            newDay.style.fontWeight = 'bold'; 
+            newDay.textContent = week[i]; 
+        }
+        if (item === week[5] || item === week[6]) { 
+            newDay.style.fontStyle = 'italic'; 
+            newDay.textContent = week[i]; 
+        } else {
+            newDay.textContent = week[i]; 
+        }
+        day.appendChild(newDay); 
+
+    });
