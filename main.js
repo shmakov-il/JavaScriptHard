@@ -1,79 +1,51 @@
 'use strict';
-function gameBot(){
 
-  const chance = 10;
-  function giveChance(chance) {
-    const misteryNumber = Math.ceil(Math.random()*100);
+const isNumber = function(n) {
+    return !isNaN(parseFloat(n) && isFinite(n));
+};
 
-    let isNumber = function(n){
-      return !isNaN(parseFloat(n)) && isFinite(n);
-    };
-
-    let personNumber; 
-
-    function guessTheNumber(){
-      personNumber = prompt('Угадайте число от 1 до 100');
-
-      function numberLess(){
-        alert(`Загаданное число меньше, осталось ${chance--} попыток`);
-      }
-      function numberMore(){
-        alert(`Загаданное число больше, осталось ${chance--} попыток`);
-      }
-      function notNumber() {
-        alert('Введите число');    
-      }
-      function enterNumber() {
-        alert('Введите число от 0 до 100');    
-      }
-      function cancelGame(){
-        alert('Игра окончена');
-        gameBot();
-      }
-      function winGame(){
-        const question = confirm('Вы угадали. Хотите сыграть еще?');
-        if (question) {
-          gameBot();
+function gameBot() {
+    let chance = 10;
+    const misteryNumber = Math.floor(Math.random() * 100);
+    function giveChance (number) {
+        if (chance > 0) {
+            number = prompt('Угадайте число от 1 до 100!');
+            if (isNumber(+number)) {
+              if (number === null) {
+                alert('Игра окончена');
+                return;
+            } else if (+number < 1 || +number > 100) {
+                alert('Введите число от 1 до 100!');
+                giveChance();
+            } else if (!isNumber(number) || number === '') {
+                alert('Введите число!');
+                giveChance();
+            } else if (+number > misteryNumber) {
+                chance--;
+                alert(`Загаданное число меньше, осталось ${chance} попыток`);
+                giveChance();
+            } else if (+number < misteryNumber) {
+                chance--;
+                alert(`Загаданное число больше, осталось ${chance} попыток`);
+                giveChance();
+            } else if (+number === misteryNumber) {
+                if (confirm('Вы угадали. Хотите сыграть еще?')) {
+                    gameBot();
+                }
+            }
+            } else {
+              alert('Введите число!');
+              giveChance();
+            }
         } else {
-          alert('Игра окончена');
-        }
-      }
-      function chanceEnd() {
-        const question = confirm('Попытки закончились, хотите сыграть еще?');
-        if (question) {
-          gameBot();
-        } else {
-          alert('Игра окончена');
-        }
-      }
-      if (isNumber(+personNumber)){
-              if (personNumber === null) {
-                cancelGame();
-              } else if (personNumber === '' || personNumber.trim() === '') {
-                notNumber();
-              } else if (Number(personNumber) < 1 || Number(personNumber) > 100) {
-                enterNumber();
-              } else if (chance <= 0) {
-                chanceEnd();
+            let gameOver = confirm('Попытки закончились, хотите сыграть ещё?');
+            if (gameOver === true) {
                 gameBot();
-              } else if (Number(personNumber) > misteryNumber) {
-                numberLess();
-              } else if (Number(personNumber) < misteryNumber){
-                numberMore();
-              } else if (Number(personNumber) === misteryNumber){
-                winGame();
-                gameBot();
-              }
-      } else {
-        notNumber();
-      }
-      return guessTheNumber();
+            } else {
+                return;
+            }
+        }
     }
-    guessTheNumber();
-    if(chance > 0) {
-      giveChance(chance);
-    }
-  }
-  giveChance(chance);
-}  
+    giveChance();
+}
 gameBot();
