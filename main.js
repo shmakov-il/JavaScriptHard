@@ -1,17 +1,15 @@
 'use strict';
 
-const isNumber = function(n) {
-    return !isNaN(parseFloat(n) && isFinite(n));
-};
+const isNumber = n => !isNaN(parseFloat(n) && isFinite(n));
 
-function gameBot() {
+const gameBot = () => {
     let chance = 10;
     const misteryNumber = Math.floor(Math.random() * 100);
-    function giveChance (number) {
+    const giveChance = number => {
         if (chance > 0) {
             number = prompt('Угадайте число от 1 до 100!');
             if (isNumber(+number)) {
-              if (number === null) {
+                if (number === null) {
                 alert('Игра окончена');
                 return;
             } else if (+number < 1 || +number > 100) {
@@ -34,8 +32,8 @@ function gameBot() {
                 }
             }
             } else {
-              alert('Введите число!');
-              giveChance();
+                alert('Введите число!');
+                giveChance();
             }
         } else {
             let gameOver = confirm('Попытки закончились, хотите сыграть ещё?');
@@ -45,7 +43,7 @@ function gameBot() {
                 return;
             }
         }
-    }
+    };
     giveChance();
-}
+};
 gameBot();
